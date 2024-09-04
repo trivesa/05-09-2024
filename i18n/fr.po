@@ -1,0 +1,247 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bi_import_product_with_variants
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-07 13:54+0000\n"
+"PO-Revision-Date: 2021-06-07 13:54+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "\"%s\" Product not found."
+msgstr "\"%s\" Produit non trouvé."
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "\"%s\" Tax not in your system"
+msgstr "\"%s\" Taxe pas dans votre système"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "%s product not found."
+msgstr "%s produit introuvable."
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "CATEGORY field can not be empty"
+msgstr "Le champ CATÉGORIE ne peut pas être vide"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "Category %s not found."
+msgstr "Catégorie %s introuvable."
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields.selection,name:bi_import_product_with_variants.selection__import_product__product_option__create
+msgid "Create Product"
+msgstr "Créer un produit"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields,field_description:bi_import_product_with_variants.field_import_product__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields,field_description:bi_import_product_with_variants.field_import_product__create_date
+msgid "Created on"
+msgstr "Créé sur"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields,field_description:bi_import_product_with_variants.field_import_product__display_name
+msgid "Display Name"
+msgstr "Afficher un nom"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields,field_description:bi_import_product_with_variants.field_import_product__file
+msgid "File"
+msgstr "Déposer"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields,field_description:bi_import_product_with_variants.field_import_product__id
+msgid "ID"
+msgstr "identifiant"
+
+#. module: bi_import_product_with_variants
+#: model_terms:ir.ui.view,arch_db:bi_import_product_with_variants.import_product_wizard_view
+msgid ""
+"If selected option as Update Product with Import Variants that's only "
+"possible with Search By Name"
+msgstr ""
+
+#. module: bi_import_product_with_variants
+#: model_terms:ir.ui.view,arch_db:bi_import_product_with_variants.import_product_wizard_view
+msgid "Import"
+msgstr "Importer"
+
+#. module: bi_import_product_with_variants
+#: model_terms:ir.ui.view,arch_db:bi_import_product_with_variants.import_product_wizard_view
+msgid "Import Product"
+msgstr "Importer un produit"
+
+#. module: bi_import_product_with_variants
+#: model:ir.actions.act_window,name:bi_import_product_with_variants.import_product_wizard
+#: model:ir.ui.menu,name:bi_import_product_with_variants.menu_product_wizard_import
+msgid "Import Product Template"
+msgstr "Importer un modèle de produit"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields,field_description:bi_import_product_with_variants.field_import_product__with_variant
+msgid "Import Variants"
+msgstr "Importer des variantes"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields,field_description:bi_import_product_with_variants.field_import_product____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields,field_description:bi_import_product_with_variants.field_import_product__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields,field_description:bi_import_product_with_variants.field_import_product__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields,field_description:bi_import_product_with_variants.field_import_product__product_option
+msgid "Option"
+msgstr "Option"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "Please give Barcode for updating Products"
+msgstr "Veuillez donner le code-barres pour la mise à jour des produits"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "Please give Internal Reference for updating Products"
+msgstr "Veuillez donner une référence interne pour la mise à jour des produits"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "Please give Name for updating Products"
+msgstr "Veuillez donner un nom pour la mise à jour des produits"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "Please give an Excel File for Importing Products!"
+msgstr "Veuillez fournir un fichier Excel pour l'importation de produits !"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "Please give attribute name for %s"
+msgstr "Veuillez donner le nom de l'attribut pour %s"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "Please give attribute value for %s"
+msgstr "Veuillez donner la valeur d'attribut pour %s"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "Please give the Attribues in file!"
+msgstr "Veuillez donner les attributs dans le fichier !"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "Please give the Variant in file!"
+msgstr "Veuillez indiquer la variante dans le fichier !"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "Please give the values after ;"
+msgstr "Veuillez donner les valeurs après ;"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "Purchase UOM %s not found"
+msgstr "UdM d'achat %s introuvable"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields.selection,name:bi_import_product_with_variants.selection__import_product__product_search__by_barcode
+msgid "Search By Barcode"
+msgstr "Recherche par code-barres"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields.selection,name:bi_import_product_with_variants.selection__import_product__product_search__by_code
+msgid "Search By Code"
+msgstr "Recherche par code"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields.selection,name:bi_import_product_with_variants.selection__import_product__product_search__by_name
+msgid "Search By Name"
+msgstr "Recherche par nom"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields,field_description:bi_import_product_with_variants.field_import_product__product_search
+msgid "Search Product"
+msgstr "Rechercher un produit"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "UOM %s not found."
+msgstr "UOM %s introuvable."
+
+#. module: bi_import_product_with_variants
+#: model:ir.model.fields.selection,name:bi_import_product_with_variants.selection__import_product__product_option__update
+msgid "Update Product"
+msgstr "Mettre à jour le produit"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "You cann't update records with Barcode!"
+msgstr "Vous ne pouvez pas mettre à jour les enregistrements avec Barcode !"
+
+#. module: bi_import_product_with_variants
+#: code:addons/bi_import_product_with_variants/wizard/product.py:0
+#, python-format
+msgid "You cann't update records with internal ref!"
+msgstr "Vous ne pouvez pas mettre à jour les enregistrements avec une référence interne !"
+
+#. module: bi_import_product_with_variants
+#: model:ir.model,name:bi_import_product_with_variants.model_import_product
+msgid "import.product"
+msgstr ""
