@@ -1,0 +1,7 @@
+Number,Customer/Vendor,Invoice/Bill Date,Account,Product,Description,Ordered Qty,Unit of Measure,Unit Price,Taxes
+Invoice 3,Azure Interior,2023-10-31,400000,FURN_6666,This product is better,10,Units,5000,15%
+Invoice 3,,,400000,E-COM11,This product is better and expensive,20,Units,5001,15%
+Invoice 3,,,400000,FURN_1118,This product is good,30,Units,5002,15%
+Invoice 4,Deco Addict,2023-10-31,400000,FURN_6666,This product is better,1,Units,5003,15%
+Invoice 4,,,400000,E-COM11,This product is better and expensive,2,Units,5004,15%
+Invoice 4,,,400000,FURN_1118,This product is good,3,Units,5005,15%
