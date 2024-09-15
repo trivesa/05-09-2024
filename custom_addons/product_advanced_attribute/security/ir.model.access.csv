@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_attribute_set,product.attribute.set,model_product_attribute_set,,1,0,0,0
+access_product_attribute_set_website_designer,product.attribute.set.website_designer,model_product_attribute_set,website.group_website_designer,1,1,1,1
+access_product_attribute_desc_lines,product.attribute_desc.lines,model_product_attribute_desc_lines,,1,0,0,0
+access_product_attribute_desc_lines_website_designer,product.attribute_desc.lines.website_designer,model_product_attribute_desc_lines,website.group_website_designer,1,1,1,1

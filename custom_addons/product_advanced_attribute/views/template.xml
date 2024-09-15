@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="attribute_type_extended" inherit_id="website_sale.products_attributes" name="Product Advanced Attributes">
+        <xpath expr="//form//t[@t-foreach='attributes']" position="replace">
+            <t t-foreach="attributes" t-as="a">
+                <div class="accordion-item nav-item mb-1 border border-0" t-if="a.value_ids and len(a.value_ids) &gt; 1 and a.visibility == 'visible'">
+                    <h6 class="mb-3">
+                        <b class="o_products_attributes_title d-none d-lg-block" t-field="a.name"/>
+                    </h6>
+                </div>
+                <div t-attf-id="o_products_attributes_{{a.id}}" t-if="a.value_ids and len(a.value_ids) &gt; 1 and a.visibility == 'visible'">
+                    <t t-if="a.display_type == 'select'">
+                        <select class="form-select css_attribute_select mb-2" name="attrib">
+                                <t t-if="attr_value_prod_counts">
+                                <option value="" selected="true">-</option>
+                                <t t-foreach="a.value_ids" t-as="v">
+                                  <t t-if="attr_value_prod_counts and attr_value_prod_counts[v.id]">
+                                    <option t-if="attr_value_prod_counts[v.id] &gt; 0" t-att-value="'%s-%s' % (a.id,v.id)" t-esc="v.name" t-att-selected="v.id in attrib_set"/>
+                                  </t>
+                                </t>
+                            </t>
+                        </select>
+                    </t>
+                    <t t-if="a.display_type == 'radio' or a.display_type == 'yes_no' or a.display_type == 'pills'">
+                        <div class="flex-column mb-3">
+                            <t t-foreach="a.value_ids" t-as="v">
+                                <t t-if="attr_value_prod_counts and attr_value_prod_counts[v.id]">
+                                    <div class="form-check mb-1" t-if="attr_value_prod_counts[v.id] &gt; 0">
+                                        <input type="checkbox" name="attrib" class="form-check-input" t-att-id="'%s-%s' % (a.id,v.id)" t-att-value="'%s-%s' % (a.id,v.id)" t-att-checked="'checked' if v.id in attrib_set else None"/>
+                                        <label class="form-check-label fw-normal" t-att-for="'%s-%s' % (a.id,v.id)" t-field="v.name"/>
+                                    </div>
+                               </t>
+                            </t>
+                        </div>
+                    </t>
+                    <div t-if="a.display_type == 'color'" class="mb-3">
+                        <t t-foreach="a.value_ids" t-as="v">
+                            <t t-if="attr_value_prod_counts and attr_value_prod_counts[v.id]">
+                                <label t-attf-style="background-color:#{v.html_color or v.name}" t-attf-class="css_attribute_color mb-1 #{'active' if v.id in attrib_set else ''}" t-if="attr_value_prod_counts[v.id] &gt; 0">
+                                    <input type="checkbox" name="attrib" t-att-value="'%s-%s' % (a.id,v.id)" t-att-checked="'checked' if v.id in attrib_set else None" t-att-title="v.name"/>
+                                </label>
+                            </t>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+    <template id="applied_filters_section" name="Applied Filters" inherit_id="website_sale.products_attributes" active="False">
+        <xpath expr="//form[hasclass('js_attributes')]" position="before">
+            <t t-if="attrib_values">
+                <div class="applied_filters">
+                    <div class="applied_filters_header">Applied Filters</div>
+                    <form class="js_applied_attributes" method="get">
+                        <input type="hidden" name="search" t-att-value="search" />
+                        <t t-foreach="attributes" t-as="a">
+                            <t t-if="filtered_attributes">
+                                <t t-if="a.id in filtered_attributes.ids">
+                                    <div class="applied_attribute_row">
+                                        <div class="applied_attribute_title">
+                                            <t t-esc="a.name" />
+                                        </div>
+                                        <t t-foreach="a.value_ids" t-as="v">
+                                            <t t-if="v.id in attrib_set">
+                                                <div class="applied_attribute_value">
+                                                    <label class="applied_filters-checkbox">
+                                                        <input type="checkbox" name="attrib" t-att-value="'%s-%s' % (a.id,v.id)" t-att-checked="'checked' if v.id in attrib_set else None" t-att-title="v.name" t-att-id="'app_%s' %(v.id)" />
+                                                        <span />
+                                                    </label>
+                                                    <label t-att-for="'app_%s' %(v.id)">
+                                                        <span style="font-weight: normal" t-field="v.name" />
+                                                    </label>
+                                                </div>
+                                            </t>
+                                        </t>
+                                    </div>
+                                </t>
+                            </t>
+                        </t>
+                    </form>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="filtered_product_count" name="Product Count" inherit_id="attribute_type_extended" active="False">
+        <xpath expr="//t[@t-foreach='attributes']" position="replace">
+            <t t-foreach="attributes" t-as="a">
+                <div class="accordion-item nav-item mb-1 border border-0" t-if="a.value_ids and len(a.value_ids) &gt; 1 and a.visibility == 'visible'">
+                    <h6 class="mb-3">
+                        <b class="o_products_attributes_title" t-field="a.name"/>
+                    </h6>
+                </div>
+                <div t-attf-id="o_products_attributes_{{a.id}}" t-if="a.value_ids and len(a.value_ids) &gt; 1 and a.visibility == 'visible'">
+                    <t t-if="a.display_type == 'select'">
+                        <select class="form-select css_attribute_select mb-2" name="attrib">
+                                <t t-if="attr_value_prod_counts">
+                                <option value="" selected="true">-</option>
+                                <t t-foreach="a.value_ids" t-as="v">
+                                  <t t-if="attr_value_prod_counts and attr_value_prod_counts[v.id]">
+                                    <option t-if="attr_value_prod_counts[v.id] &gt; 0" t-att-value="'%s-%s' % (a.id,v.id)" t-att-selected="v.id in attrib_set">
+                                        <span t-esc="v.name" />
+                                        <span class="attr_val_count font-weight-bold" t-esc="'(%s)' %(str(attr_value_prod_counts[v.id]),)" />
+                                    </option>
+                                  </t>
+                                </t>
+                            </t>
+                        </select>
+                    </t>
+                    <t t-if="a.display_type == 'radio' or a.display_type == 'yes_no' or a.display_type == 'pills'">
+                        <div class="flex-column mb-3">
+                            <t t-foreach="a.value_ids" t-as="v">
+                                <t t-if="attr_value_prod_counts and attr_value_prod_counts[v.id]">
+                                    <div class="form-check mb-1" t-if="attr_value_prod_counts[v.id] &gt; 0">
+                                        <input type="checkbox" name="attrib" class="form-check-input" t-att-id="'%s-%s' % (a.id,v.id)" t-att-value="'%s-%s' % (a.id,v.id)" t-att-checked="'checked' if v.id in attrib_set else None"/>
+                                        <label class="form-check-label fw-normal" t-att-for="'%s-%s' % (a.id,v.id)" t-field="v.name"/>
+                                        <span class="attr_val_count font-weight-bold" t-esc="'(%s)' %(str(attr_value_prod_counts[v.id]),)" />
+                                    </div>
+                               </t>
+                            </t>
+                        </div>
+                    </t>
+                    <div t-if="a.display_type == 'color'" class="mb-3">
+                        <t t-foreach="a.value_ids" t-as="v">
+                            <t t-if="attr_value_prod_counts and attr_value_prod_counts[v.id]">
+                                <label t-attf-style="background-color:#{v.html_color or v.name}" t-attf-class="css_attribute_color mb-1 #{'active' if v.id in attrib_set else ''}" t-if="attr_value_prod_counts[v.id] &gt; 0">
+                                    <input type="checkbox" name="attrib" t-att-value="'%s-%s' % (a.id,v.id)" t-att-checked="'checked' if v.id in attrib_set else None" t-att-title="v.name"/>
+                                </label>
+                                <span class="attr_val_count font-weight-bold" t-esc="'(%s)' %(str(attr_value_prod_counts[v.id]),)" />
+                            </t>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="product_attributes_body" inherit_id="website_sale_comparison.product_attributes_body" name="Product attributes table">
+        <xpath expr="//t[@t-if='categories']" position="replace">
+            <section class="pt32 pb32" id="product_full_spec">
+                <t t-set="atts" t-value="product.get_variant_groups()" />
+                <t t-if="len(atts)">
+                    <div class="container">
+                        <div class="d-flex justify-content-between">
+                            <h3 class="mb32">Specifications</h3>
+                            <t t-if="is_view_active('website_sale_comparison.add_to_compare')">
+                                <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()"/>
+                                <button t-if="product_variant_id and categories"
+                                    type="button" 
+                                    role="button" 
+                                    class="d-none d-md-block btn btn-link px-0 o_add_compare_dyn" 
+                                    aria-label="Compare" 
+                                    t-att-data-product-product-id="product_variant_id" 
+                                    data-action="o_comparelist">
+                                        <span class="fa fa-exchange me-2"></span>Compare
+                                </button>
+                            </t>
+                        </div>
+                        <div id="product_specifications">
+                            <div class="row">
+                                <t t-foreach="atts" t-as="spec">
+                                    <div class="col-lg-6">
+                                        <table class="table">
+                                            <t t-if="len(atts) > 1">
+                                                <t t-if="len(atts[spec])">
+                                                    <tr>
+                                                        <th class="text-left" t-att-colspan="2">
+                                                            <span t-if="spec" t-field="spec.name"/>
+                                                            <span t-else="">
+                                                                <t t-if="len(atts[spec])">Uncategorized</t>
+                                                                <t t-else=""/>
+                                                            </span>
+                                                        </th>
+                                                    </tr>
+                                                </t>
+                                            </t>
+                                            <t t-else="">
+                                                <tr>
+                                                    <th class="text-left" t-att-colspan="2">
+                                                        <span>Uncategorized</span>
+                                                    </th>
+                                                </tr>
+                                            </t>
+                                            <tr t-foreach="atts[spec]" t-as="ptal" t-if="ptal.attribute_id.use_in_product_attributes_table">
+                                                <td class="w-25"><span t-field="ptal.attribute_id.name"/></td>
+                                                <td class="w-75 text-muted">
+                                                    <t t-foreach="ptal.value_ids" t-as="pav">
+                                                        <span t-field="pav.name"/><t t-if="not pav_last"> |</t>
+                                                    </t>
+                                                    <t t-if="ptal.attribute_id.display_type == 'text' and ptal._name == 'product.attribute_desc.lines'">
+                                                        <span t-field="ptal.attribute_text"/>
+                                                    </t>
+                                                    <t t-if="ptal.attribute_id.display_type == 'textarea' and ptal._name == 'product.attribute_desc.lines'">
+                                                        <span t-field="ptal.attribute_textarea"/>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </section>
+        </xpath>
+    </template>
+
+    <template id="product_compare_extend" inherit_id="website_sale_comparison.product_compare">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="js_sale">
+                <div class="oe_structure oe_empty" id="oe_structure_website_sale_comparison_product_compare_1"/>
+                <div class="container oe_website_sale pt-3">
+                    <section class="container">
+                        <h3>Compare Products</h3>
+                        <table class="table table-bordered table-hover text-center mt16 table-comparator" id="o_comparelist_table">
+                            <t t-set="categories" t-value="products.get_compare_list()"/>
+                            <thead>
+                                <tr>
+                                    <td t-if="len(categories)" class='o_ws_compare_image td-top-left border-bottom-0'/>
+                                    <td t-foreach="products" t-as="product" class="o_ws_compare_image position-relative border-bottom-0">
+                                        <a href="#" t-att-data-product_product_id="product.id" class="o_comparelist_remove" t-if="len(products) &gt; 2">
+                                            <strong>x</strong>
+                                        </a>
+                                        <a t-att-href="product.website_url">
+                                            <img t-attf-src="/web/image/product.product/#{product.id}/image_256" class="img img-fluid" style="margin:auto;" alt="Product image"/>
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td t-if="len(categories)" class='td-top-left border-top-0'/>
+                                    <td t-foreach="products" t-as="product" class="border-top-0">
+                                        <t t-set="combination_info" t-value="product._get_combination_info_variant()"/>
+                                        <div class='product_summary'>
+                                            <a class="o_product_comparison_table" t-att-href="product.website_url">
+                                                <span t-esc="combination_info['display_name']"></span><br/>
+                                            </a>
+
+                                            <span>
+                                                <strong>Price:</strong>
+                                                <del t-attf-class="text-danger mr8 {{'' if combination_info['has_discounted_price'] else 'd-none'}}" style="white-space: nowrap;" t-esc="combination_info['list_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                                                <span t-esc="combination_info['price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"></span>
+                                            </span>
+
+                                            <form action="/shop/cart/update" method="post" class="text-center">
+                                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+                                                <input name="product_id" t-att-value="product.id" type="hidden"/>
+                                                <a role="button" class="btn btn-primary btn-block a-submit" href="#"><i class="fa fa-shopping-cart"></i>&amp;nbsp;Add to Cart</a>
+                                            </form>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="categories" t-as="category">
+                                    <t t-if="len(categories[category]) &gt; 0">
+                                        <tr class="clickable" data-toggle="collapse" t-att-data-target="'.o_ws_category_%d' % category.id">
+                                            <th class="text-left" t-att-colspan="len(products) + 1"><i class="fa fa-chevron-circle-down o_product_comparison_collpase" role="img" aria-label="Collapse" title="Collapse"></i><span t-if="category" t-field="category.name"/><span t-else="">Uncategorized</span></th>
+                                        </tr>
+                                    </t>
+                                    <tr t-foreach="categories[category]" t-as="attribute" t-att-class="'collapse show o_ws_category_%d' % category.id">
+                                        <t t-if="attribute.display_type not in ['text', 'textarea']">
+                                            <td><span t-field="attribute.name"/></td>
+                                            <td t-foreach="categories[category][attribute]" t-as="product">
+                                                <t t-foreach="categories[category][attribute][product]" t-as="ptav">
+                                                    <t t-foreach="ptav" t-as="val">
+                                                        <span t-esc="val.name"/><t t-if="not val_last">, </t>
+                                                    </t>
+                                                </t>
+                                            </td>
+                                        </t>
+                                        <t t-if="attribute.display_type == 'text'">
+                                            <td><span t-field="attribute.name"/></td>
+                                            <td t-foreach="categories[category][attribute]" t-as="product">
+                                                <t t-foreach="categories[category][attribute][product]" t-as="ptav">
+                                                    <span t-if="ptav" t-esc="ptav"/>
+                                                </t>
+                                            </td>
+                                        </t>
+                                        <t t-if="attribute.display_type == 'textarea'">
+                                            <td><span t-field="attribute.name"/></td>
+                                            <td t-foreach="categories[category][attribute]" t-as="product">
+                                                <t t-foreach="categories[category][attribute][product]" t-as="ptav">
+                                                    <span t-raw="ptav"/>
+                                                </t>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </section>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="snippet_options" inherit_id="website_sale.snippet_options" name="e-commerce snippet options">
+            <xpath expr="//div[@data-js='WebsiteSaleGridLayout']" position="inside">
+                <we-checkbox string="Product Count"
+                         class="o_we_sublevel_1"
+                         data-customize-website-views="product_advanced_attribute.filtered_product_count"
+                         data-dependencies="categories_opt, attributes_opt"
+                         data-no-preview="true"
+                         data-reload="/"/>
+                <we-checkbox string="Applied Filters"
+                         class="o_we_sublevel_1"
+                         data-customize-website-views="product_advanced_attribute.applied_filters_section"
+                         data-dependencies="categories_opt, attributes_opt"
+                         data-no-preview="true"
+                         data-reload="/"/>
+            </xpath>
+    </template>
+</odoo>
