@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Product View Inherited-->
+    <record id="sh_product_variant_inventory_lot_view" model="ir.ui.view">
+        <field name="name">product.product</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_product_tree_view" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="sh_display_name" invisible="1" />
+            </field>
+        </field>
+    </record>
+</odoo>
