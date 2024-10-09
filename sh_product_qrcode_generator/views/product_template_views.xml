@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="product.product_template_only_form_view" />
         <field name="arch" type="xml">
             <field name="barcode" position="after">
-                <field name="sh_qr_code" invisible="product_variant_count &gt; 1" />
+                <field name="default_code" invisible="product_variant_count &gt; 1" />
                 <field name="sh_qr_code_img" widget="image" class="oe_avatar float-left" invisible="product_variant_count &gt; 1" />
             </field>
         </field>
@@ -32,7 +32,7 @@
         <field name="inherit_id" ref="product.product_template_tree_view" />
         <field name="arch" type="xml">
             <field name="active" position="after">
-                <field name="sh_qr_code" />
+                <field name="default_code" />
             </field>
             <xpath expr="//header" position="inside">
                 <button string="Print QR Code Labels" type="object"
@@ -48,7 +48,7 @@
         <field name="inherit_id" ref="product.product_template_search_view" />
         <field name="arch" type="xml">
             <field name="name" position="attributes">
-                <attribute name="filter_domain">['|', '|', '|', '|', ('default_code', 'ilike', self),('product_variant_ids.default_code','ilike', self),('name', 'ilike', self), ('barcode', 'ilike',self),('sh_qr_code', 'ilike', self)]</attribute>
+                <attribute name="filter_domain">['|', '|', '|', ('default_code', 'ilike', self),('product_variant_ids.default_code','ilike', self),('name', 'ilike', self), ('barcode', 'ilike',self)]</attribute>
             </field>
         </field>
     </record>
