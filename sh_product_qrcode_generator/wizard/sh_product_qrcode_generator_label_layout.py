@@ -9,6 +9,8 @@ class ShProductQRCodeGeneratorLabelLayout(models.TransientModel):
     _name = 'sh.product.qrcode.generator.label.layout'
     _description = 'Choose the sheet layout to print the labels with QR code'
 
+    qr_code_info = fields.Char(string="QR Code Info", default="QR code is generated based on internal reference", readonly=True)
+
     print_format = fields.Selection([
         ('dymo', 'Dymo'),
         ('2x7xprice', '2 x 7 with price'),
@@ -57,12 +59,13 @@ class ShProductQRCodeGeneratorLabelLayout(models.TransientModel):
 
         # Build data to pass to the report
         data = {
-            'active_model': active_model,
-            'quantity_by_product': {p: self.custom_quantity for p in products},
-            'layout_wizard': self.id,
-            'price_included': 'xprice' in self.print_format,
-        }
-        return xml_id, data
+        'active_model': active_model,
+        'quantity_by_product': {p: self.custom_quantity for p in products},
+        'layout_wizard': self.id,
+        'price_included': 'xprice' in self.print_format,
+        'use_default_code_for_qr': True,  # 添加这一行
+    }
+    return xml_id, data
 
     def process_with_qr_code(self):
         self.ensure_one()
