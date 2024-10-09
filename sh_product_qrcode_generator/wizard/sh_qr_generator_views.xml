@@ -5,6 +5,9 @@
         <field name="model">sh.product.qrcode.generator.wizard</field>
         <field name="arch" type="xml">
             <form string="QR Code Generator">
+                <div class="alert alert-info" role="alert">
+                    <strong>Note:</strong> QR codes will be generated using the product's internal reference (Default Code). Ensure all selected products have a valid internal reference.
+                </div>
                 <group>
                     <group colspan="2">
                         <field name="is_overwrite_existing" />
