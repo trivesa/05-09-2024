@@ -17,6 +17,9 @@
                         <field name="extra_html" widget="html" invisible="print_format not in ['dymo', '2x7xprice']"/>
                     </group>
                 </group>
+                <div class="text-muted">
+                    Note: QR codes are generated based on the product's internal reference.
+                </div>
                 <footer>
                     <button name="process_with_qr_code" string="Confirm" type="object" class="btn-primary"/>
                     <button string="Discard" class="btn-secondary" special="cancel"/>
