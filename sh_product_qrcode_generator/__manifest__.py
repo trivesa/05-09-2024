@@ -4,7 +4,7 @@
     "name": "Product QR Code Generator",
     "author": "Softhealer Technologies",
     "website": "https://www.softhealer.com",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "category": "Extra Tools",
     "license": "OPL-1",
     "summary": "Default Make QR Module New Product QR Generate App Existing Product QR Generate Application Existing Multi Product QR Create Custom Product QR Generator Product QRCode Generator QRCode Product Odoo Print QRCode In Product Labels Print QR Code In Product Labels Products QRCode Generator Unique QR Code Generator Unique QRCode Generator Product Variants QRCode Generator Product Variants QR Code Generator Generate QR Code Odoo Automatic Generate Product QR Odoo Generate Product QR Codes Product QR Code Creator QR Code Generator for Products Create QR Codes for Products Quick Response code Item QR Code Creator QR Code Label Maker for Products Generate QR Codes for Inventory Items Product Identification QR Codes QR Code Printing for Products Product Label QR Code Generator Create Unique QR Codes for Products",
