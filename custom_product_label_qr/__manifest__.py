@@ -16,6 +16,8 @@
     ],
     'data': [
         'views/report_product_label.xml',
+        'views/product_label_views.xml',
+        'report/custom_product_label_report.xml',
     ],
     'installable': True,
     'application': False,
