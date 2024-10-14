@@ -8,7 +8,12 @@
     """,
     'author': 'TRIVESA',
     'website': 'https://www.milanomodamaison.it',
-    'depends': ['product', 'barcodes', 'sh_product_qrcode_generator'],
+    'depends': [
+        'product',
+        'barcodes',
+        'base_setup',
+        'sh_product_qrcode_generator'
+    ],
     'data': [
         'views/report_product_label.xml',
     ],
