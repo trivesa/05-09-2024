@@ -56,7 +56,7 @@ class ShProductQRCodeGeneratorLabelLayout(models.TransientModel):
         'price_included': 'xprice' in self.print_format,
         'use_default_code_for_qr': True,
     }
-    return xml_id, data  # 确保这行与其他代码保持相同的缩进级别
+    return xml_id, data
 
     def process_with_qr_code(self):
         self.ensure_one()
